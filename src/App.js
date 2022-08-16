@@ -1,7 +1,9 @@
+import LoginPage from "./components/LoginPage.js";
+
 const App = () => {
   return (
     <div>
-      <h1>Testing</h1>
+      <LoginPage />
     </div>
   );
 }
