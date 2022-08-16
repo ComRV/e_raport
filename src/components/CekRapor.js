@@ -3,7 +3,7 @@ import pendidikan from "../img/pendidikan.png"
 
 const CekRapor = () => {
     return (
-        <div className="bg-login-pattern min-w-full tablet:w-tablet laptop:w-laptop h-screen m-auto">
+        <div className="bg-login-pattern min-w-full h-screen m-auto">
             <Helmet>
                 <title>Cek Rapor</title>
             </Helmet>
