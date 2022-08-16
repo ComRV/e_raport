@@ -23,6 +23,7 @@ const loginPage = () => {
                     <button className='bg-blue-500 w-11/12 h-9 rounded-md mt-3 ml-5 hover:bg-blue-600 active:bg-blue-700 duration-150 font-lato font-semibold text-gray-200 tracking-wider'>LOGIN</button>
                 </div>
             </form>
+            <footer className="flex justify-center items-center font-lato text-xs absolute bottom-0 w-mobile">© 2022 Copyright: Rizky Duika</footer>
         </div>
     )
 }

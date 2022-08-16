@@ -14,7 +14,8 @@ module.exports = {
 
       fontFamily: {
         'lato': "'Lato', sans-serif",
-        'rubik': "'Rubik', sans-serif"
+        'rubik': "'Rubik', sans-serif",
+        'nunito-sans': "'Nunito Sans', sans-serif"
       }
     },
   },
