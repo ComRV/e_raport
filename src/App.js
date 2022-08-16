@@ -1,10 +1,15 @@
-import LoginPage from "./components/LoginPage.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./components/LoginPage";
+import CekRapor from "./components/CekRapor"
 
 const App = () => {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/cekRapor" element={<CekRapor />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
