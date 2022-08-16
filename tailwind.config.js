@@ -9,13 +9,21 @@ module.exports = {
       },
 
       width: {
-        "mobile": '480px'
+        "mobile": '480px',
+        "tablet": '640px',
+        "laptop": '1024px'
       },
 
       fontFamily: {
         'lato': "'Lato', sans-serif",
         'rubik': "'Rubik', sans-serif",
         'nunito-sans': "'Nunito Sans', sans-serif"
+      },
+
+      screens: {
+        "mobile": '480px',
+        "tablet": '640px',
+        "laptop": '1024px'
       }
     },
   },
