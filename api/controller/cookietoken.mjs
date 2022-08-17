@@ -5,7 +5,7 @@ export const Cookietoken = async (req, res) => {
     try {
         const token = req.cookies.token
         if (!token) return res.sendStatus(401)
-        await Users.updateOne({ token }, { refreshToken: token })
+        await Users.updateOne({ refreshToken: token }, { refreshToken: token })
         const data = await Users.findOne({ refreshToken: token })
         Jwt.verify(token, process.env.REFRESH_TOKEN, (err, decoded) => {
             if (err) return res.sendStatus(403)
