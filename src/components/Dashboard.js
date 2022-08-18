@@ -9,6 +9,7 @@ const Dashboard = () => {
             <div className="absolute bg-gray-200 w-screen h-10"></div>
             <Navbar route="dashboard" />
             <Rightnav />
+            <footer className="flex justify-center items-center font-lato text-xs absolute bottom-0 w-screen">© 2022 Copyright: Rizky Duika</footer>
         </div>
     )
 }
