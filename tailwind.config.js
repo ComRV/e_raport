@@ -24,8 +24,11 @@ module.exports = {
         "mobile": '480px',
         "tablet": '640px',
         "laptop": '1024px'
-      }
+      },
+
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate")
+  ],
 }
