@@ -3,6 +3,7 @@ import Dashboard from "./components/Dashboard";
 import LoginPage from "./components/LoginPage";
 import CekRapor from "./components/CekRapor";
 import Daftarsiswa from "./components/Daftarsiswa";
+import Tambahsiswa from "./components/Tambahsiswa";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/daftarsiswa" element={<Daftarsiswa />} />
+        <Route path="/daftarsiswa/tambahsiswa" element={<Tambahsiswa />} />
       </Routes>
     </BrowserRouter>
   );
