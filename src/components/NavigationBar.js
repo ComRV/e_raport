@@ -30,7 +30,7 @@ const Navbar = (props) => {
 
     return (
         <div className="row-span-3 z-10">
-            <div className={`w-48 laptop:w-64 ${toggleMenu ? "bg-transparent" : "bg-gray-200 h-screen"}`}>
+            <div className={`w-48 fixed laptop:w-64 ${toggleMenu ? "bg-transparent" : "bg-gray-200 h-screen"}`}>
                 <div className={`flex ${!toggleMenu && "flex-row justify-between mx-4"}`}>
                     {!toggleMenu && <h1 className="mt-2 font-lato font-semibold laptop:text-xl">E-Rapor</h1>}
                     <button onClick={() => setToogleMenu(!toggleMenu)} className={`mt-2 ${toggleMenu && "ml-3"}`}>
