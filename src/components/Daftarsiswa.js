@@ -1,10 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Helmet } from "react-helmet"
 import { Navbar, Rightnav } from "./NavigationBar"
 import { Link, Outlet } from "react-router-dom"
-
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 
 const Daftarsiswa = () => {
+    const [siswa, setSiswa] = useState([])
+    useEffect(() => {
+        getDaftarSiswa()
+    }, [])
+
+    const getDaftarSiswa = async () => {
+        const GetToken = await axios.get("http://localhost:5000/token")
+        const token = GetToken.data.accessToken
+        const res = await axios.get("http://localhost:5000/daftarsiswa", { headers: { Authorization: `Bearer ${token}` } })
+        setSiswa(res.data)
+    }
+
     return (
         <div className="container min-w-full grid grid-row-3 grid-flow-col gap-4 bg-login-pattern h-screen">
             <Helmet><title>Daftar Siswa</title></Helmet>
@@ -33,34 +47,22 @@ const Daftarsiswa = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className="border border-slate-800">1</td>
-                            <td className="border border-slate-800">rizky</td>
-                            <td className="border border-slate-800">12145</td>
-                            <td className="border border-slate-800">1214571478944</td>
-                            <td className="border border-slate-800">Laki-Laki</td>
-                            <td className="border border-slate-800">Pangkal Pinang, 11 Juli 2001</td>
-                            <td className="border border-slate-800">Islam</td>
-                            <td className="border border-slate-800">Jln sungai selan km 4.5</td>
-                            <td className="border border-slate-800">
-                                <button className="bg-blue-500 my-2 px-2 rounded-md hover:bg-blue-600 active:bg-blue-700 duration-150 font-lato font-semibold tracking-wider">Ubah
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="border border-slate-800">1</td>
-                            <td className="border border-slate-800">rizky</td>
-                            <td className="border border-slate-800">12145</td>
-                            <td className="border border-slate-800">1214571478944</td>
-                            <td className="border border-slate-800">Laki-Laki</td>
-                            <td className="border border-slate-800">Pangkal Pinang, 11 Juli 2001</td>
-                            <td className="border border-slate-800">Islam</td>
-                            <td className="border border-slate-800">Jln sungai selan km 4.5</td>
-                            <td className="border border-slate-800">
-                                <button className="bg-blue-500 my-2 px-2 rounded-md hover:bg-blue-600 active:bg-blue-700 duration-150 font-lato font-semibold tracking-wider">Ubah
-                                </button>
-                            </td>
-                        </tr>
+                        {siswa.map((s, i) => (
+                            <tr key={s._id}>
+                                <td className="border border-slate-800">{i + 1}</td>
+                                <td className="border border-slate-800">{s.namaSiswa}</td>
+                                <td className="border border-slate-800">{s.noInduk}</td>
+                                <td className="border border-slate-800">{s.NISN}</td>
+                                <td className="border border-slate-800">{s.jenisKelamin}</td>
+                                <td className="border border-slate-800">{`${s.tempatLahir}, ${s.tglLahir}`}</td>
+                                <td className="border border-slate-800">{s.agama}</td>
+                                <td className="border border-slate-800">{s.alamat}</td>
+                                <td className="border border-slate-800">
+                                    <button className="bg-blue-500 my-2 px-2 rounded-md hover:bg-blue-600 active:bg-blue-700 duration-150 font-lato text-white tracking-wider">Ubah
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

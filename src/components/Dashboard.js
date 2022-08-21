@@ -50,7 +50,7 @@ const Dashboard = () => {
                         <div className="ml-32">
                             <p className="my-3">: Sekolah Dasar Internasional Bangka</p>
                             <p className="my-3">: 10901999</p>
-                            <p className="my-3">: M. Sambo S.Pd M.T</p>
+                            <p className="my-3">: M. Luhut S.Pd M.T</p>
                             <p className="my-3">: 2013</p>
                             <p className="my-3">: 12 Kelas</p>
                             <p className="my-3">: 1977</p>
