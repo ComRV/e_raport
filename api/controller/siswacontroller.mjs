@@ -1,7 +1,6 @@
 import Siswa from "../model/siswamodel.mjs";
-import Capitalize from "../self_modul/capitalize.mjs";
-import moment from "moment";
-moment().format()
+import Capitalize from "../selfModul/capitalize.mjs";
+
 
 const tambahSiswa = async (req, res) => {
     const data = new Siswa(req.body)
@@ -37,11 +36,29 @@ const tambahSiswa = async (req, res) => {
 
 const daftarSiswa = async (req, res) => {
     try {
-        const siswa = await Siswa.find({})
+        const siswa = req.params.id === 'all' ? await Siswa.find({}) : await Siswa.findById(req.params.id)
         res.json(siswa)
     } catch (error) {
-        res.json({ error: error.message })
+        res.json({ message: error.message })
     }
 }
 
-export { tambahSiswa, daftarSiswa }
+const ubahSiswa = async (req, res) => {
+    try {
+        await Siswa.updateOne({ _id: req.params.id }, { $set: req.body })
+        res.status(200).json({ message: "Data siswa berhasil diubah" })
+    } catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
+const hapusSiswa = async (req, res) => {
+    try {
+        await Siswa.deleteOne({ _id: req.params.id })
+        res.status(200).json({ message: "Data berhasil dihapus" })
+    } catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
+export { tambahSiswa, daftarSiswa, ubahSiswa, hapusSiswa }
