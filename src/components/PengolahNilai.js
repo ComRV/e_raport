@@ -5,6 +5,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import arrow from "../img/arrow.png"
 import { Outlet, Link } from "react-router-dom"
+import GetToken from "../token/token"
 
 const PengolahNilai = () => {
     const [siswa, setSiswa] = useState([])
@@ -22,8 +23,7 @@ const PengolahNilai = () => {
     }, [])
 
     const getDaftarSiswa = async () => {
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.get("http://localhost:5000/daftarsiswa/all", { headers: { Authorization: `Bearer ${token}` } })
         setSiswa(res.data)
         setPABP(res.data[0].nilaiMapel.PABP)

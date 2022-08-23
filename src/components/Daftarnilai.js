@@ -4,6 +4,7 @@ import { Navbar, Rightnav } from "./NavigationBar"
 import { Link, Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import GetToken from "../token/token"
 
 
 const Daftarnilai = () => {
@@ -14,8 +15,7 @@ const Daftarnilai = () => {
     }, [])
 
     const getDaftarSiswa = async () => {
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.get("http://localhost:5000/daftarsiswa/all", { headers: { Authorization: `Bearer ${token}` } })
         setSiswa(res.data)
     }

@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import { Navbar, Rightnav } from "./NavigationBar"
 import { Link, Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
+import GetToken from "../token/token"
 import axios from "axios"
 
 
@@ -14,15 +15,13 @@ const Daftarsiswa = () => {
     }, [])
 
     const HapusSiswa = async (id) => {
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.delete(`http://localhost:5000/hapussiswa/${id}`, { headers: { Authorization: `Bearer ${token}` } })
         alert(res.data.message)
         window.location.reload()
     }
     const getDaftarSiswa = async () => {
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.get("http://localhost:5000/daftarsiswa/all", { headers: { Authorization: `Bearer ${token}` } })
         setSiswa(res.data)
     }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Navbar, Rightnav } from "./NavigationBar"
 import { Link, Outlet, useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
+import GetToken from "../token/token"
 import arrow from "../img/arrow.png"
 
 
@@ -27,8 +28,7 @@ const Ubahsiswa = () => {
     const Updatesiswa = async (e) => {
         try {
             e.preventDefault()
-            const GetToken = await axios.get("http://localhost:5000/token")
-            const token = GetToken.data.accessToken
+            const token = await GetToken()
             const res = await axios.patch(`http://localhost:5000/ubahsiswa/${Id}`, { namaSiswa, noInduk, NISN, jenisKelamin, tempatLahir, tglLahir, agama, alamat }, { headers: { Authorization: `Bearer ${token}` } })
             setMsg(res.data.message)
             setTimeout(() => {
@@ -42,8 +42,7 @@ const Ubahsiswa = () => {
     }
 
     const getSiswa = async () => {
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.get(`http://localhost:5000/daftarsiswa/${Id}`, { headers: { Authorization: `Bearer ${token}` } })
         setNamaSiswa(res.data.namaSiswa)
         setNoInduk(res.data.noInduk)

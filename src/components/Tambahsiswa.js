@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Navbar, Rightnav } from "./NavigationBar"
 import { Link, Outlet } from "react-router-dom"
 import axios from "axios"
+import GetToken from "../token/token"
 import arrow from "../img/arrow.png"
 
 
@@ -20,8 +21,7 @@ const Tambahsiswa = () => {
     const Addsiswa = async (e) => {
         try {
             e.preventDefault()
-            const GetToken = await axios.get("http://localhost:5000/token")
-            const token = GetToken.data.accessToken
+            const token = await GetToken()
             const res = await axios.post("http://localhost:5000/tambahsiswa", { namaSiswa, noInduk, NISN, jenisKelamin, tempatLahir, tglLahir, agama, alamat }, { headers: { Authorization: `Bearer ${token}` } })
             setMsg(res.data.message)
         } catch (error) {
