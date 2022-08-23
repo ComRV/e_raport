@@ -61,4 +61,5 @@ const hapusSiswa = async (req, res) => {
     }
 }
 
+
 export { tambahSiswa, daftarSiswa, ubahSiswa, hapusSiswa }

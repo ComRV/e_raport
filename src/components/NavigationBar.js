@@ -57,8 +57,8 @@ const Navbar = (props) => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/">
-                                <button className="py-2 pl-4 pr-[38%] duration-150 hover:bg-gray-300 active:bg-gray-400 laptop:pr-[47.5%]">Pengolahan Nilai</button>
+                            <Link to="/daftarnilai">
+                                <button className={`py-2 pl-4 pr-[38%] duration-150 ${bar === "daftarnilai" ? "bg-gray-400" : "hover:bg-gray-300 active:bg-gray-400"} laptop:pr-[47.5%]`}>Pengolahan Nilai</button>
                                 <Outlet />
                             </Link>
                         </li>
