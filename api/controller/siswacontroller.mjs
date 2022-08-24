@@ -18,6 +18,7 @@ const tambahSiswa = async (req, res) => {
     })
 
     try {
+        Object.assign(data, { nilaiMapel: { PABP: 0, PPKN: 0, BIndo: 0, Matematika: 0, IPA: 0, IPS: 0, Average: 0 } })
         data.namaSiswa = Capitalize(data.namaSiswa)
         data.tempatLahir = Capitalize(data.tempatLahir)
         data.alamat = Capitalize(data.alamat)
