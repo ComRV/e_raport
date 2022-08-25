@@ -7,6 +7,7 @@ import Tambahsiswa from "./components/Tambahsiswa";
 import Ubahsiswa from "./components/UbahSiswa";
 import Daftarnilai from "./components/Daftarnilai";
 import PengolahNilai from "./components/PengolahNilai";
+import Cetakrapor from "./components/Cetakrapor";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/daftarsiswa/ubahsiswa/:Id" element={<Ubahsiswa />} />
         <Route path="/daftarnilai" element={<Daftarnilai />} />
         <Route path="/daftarnilai/pengolahnilai" element={<PengolahNilai />} />
+        <Route path="/cetakrapor" element={<Cetakrapor />} />
       </Routes>
     </BrowserRouter>
   );

@@ -43,9 +43,9 @@ const PengolahNilai = () => {
     }
 
     const setNilai = async (id) => {
+        setIdSiswa(id)
         const token = await GetToken()
         const res = await axios.get(`http://localhost:5000/daftarsiswa/${id}`, { headers: { Authorization: `Bearer ${token}` } })
-        setIdSiswa(id)
         setPABP(res.data.nilaiMapel.PABP)
         setPPKN(res.data.nilaiMapel.PPKN)
         setBIndo(res.data.nilaiMapel.BIndo)
