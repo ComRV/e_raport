@@ -26,6 +26,7 @@ const PengolahNilai = () => {
         const token = await GetToken()
         const res = await axios.get("http://localhost:5000/daftarsiswa/all", { headers: { Authorization: `Bearer ${token}` } })
         setSiswa(res.data)
+        setIdSiswa(res.data[0]._id)
         setPABP(res.data[0].nilaiMapel.PABP)
         setPPKN(res.data[0].nilaiMapel.PPKN)
         setBIndo(res.data[0].nilaiMapel.BIndo)
@@ -36,17 +37,15 @@ const PengolahNilai = () => {
 
     const Inputnilai = async (e) => {
         e.preventDefault()
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.patch(`http://localhost:5000/inputnilai/${IdSiswa}`, { PABP: parseInt(PABP), PPKN: parseInt(PPKN), BIndo: parseInt(BIndo), Matematika: parseInt(Matematika), IPA: parseInt(IPA), IPS: parseInt(IPS) }, { headers: { Authorization: `Bearer ${token}` } })
         setMsg(res.data.message)
     }
 
     const setNilai = async (id) => {
-        setIdSiswa(id)
-        const GetToken = await axios.get("http://localhost:5000/token")
-        const token = GetToken.data.accessToken
+        const token = await GetToken()
         const res = await axios.get(`http://localhost:5000/daftarsiswa/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+        setIdSiswa(id)
         setPABP(res.data.nilaiMapel.PABP)
         setPPKN(res.data.nilaiMapel.PPKN)
         setBIndo(res.data.nilaiMapel.BIndo)

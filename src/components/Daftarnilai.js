@@ -41,11 +41,12 @@ const Daftarnilai = () => {
                             <th className="border border-slate-800">Nama</th>
                             <th className="border border-slate-800">PABP</th>
                             <th className="border border-slate-800">PPKN</th>
-                            <th className="border border-slate-800">Bhs Indonesia</th>
-                            <th className="border border-slate-800">Matematika</th>
+                            <th className="border border-slate-800">BIndo</th>
+                            <th className="border border-slate-800">MTK</th>
                             <th className="border border-slate-800">IPA</th>
                             <th className="border border-slate-800">IPS</th>
                             <th className="border border-slate-800">Rata-Rata</th>
+                            <th className="border border-slate-800">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +61,7 @@ const Daftarnilai = () => {
                                 <td className="border border-slate-800">{s.nilaiMapel.IPA}</td>
                                 <td className="border border-slate-800">{s.nilaiMapel.IPS}</td>
                                 <td className="border border-slate-800">{s.nilaiMapel.Average}</td>
+                                <td className="border border-slate-800">{s.nilaiMapel.Keterangan}</td>
                             </tr>
                         ))}
                     </tbody>

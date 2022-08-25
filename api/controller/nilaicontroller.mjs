@@ -5,7 +5,8 @@ const inputNilai = async (req, res) => {
         const nilaiMapel = req.body
         const nilai = Object.values(nilaiMapel)
         const jumlah_nilai = nilai.reduce((a, b) => a + b)
-        Object.assign(nilaiMapel, { Average: parseFloat((jumlah_nilai / nilai.length).toFixed(2)) })
+        const Average = parseFloat((jumlah_nilai / nilai.length).toFixed(2))
+        Object.assign(nilaiMapel, { Average, Keterangan: Average > 65 ? "Lulus" : "Tidak Lulus" })
         await Siswa.updateOne({ _id: req.params.id }, { nilaiMapel })
         res.status(200).json({ message: "Input data nilai berhasil" })
     } catch (error) {

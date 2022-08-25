@@ -18,7 +18,7 @@ const tambahSiswa = async (req, res) => {
     })
 
     try {
-        Object.assign(data, { nilaiMapel: { PABP: 0, PPKN: 0, BIndo: 0, Matematika: 0, IPA: 0, IPS: 0, Average: 0 } })
+        Object.assign(data, { nilaiMapel: { PABP: 0, PPKN: 0, BIndo: 0, Matematika: 0, IPA: 0, IPS: 0, Average: 0, Keterangan: "-" } })
         data.namaSiswa = Capitalize(data.namaSiswa)
         data.tempatLahir = Capitalize(data.tempatLahir)
         data.alamat = Capitalize(data.alamat)
@@ -37,7 +37,7 @@ const tambahSiswa = async (req, res) => {
 
 const daftarSiswa = async (req, res) => {
     try {
-        const siswa = req.params.id === 'all' ? await Siswa.find({}) : await Siswa.findById(req.params.id)
+        const siswa = req.params.id === 'all' ? await Siswa.find({}).sort({ namaSiswa: 1 }) : await Siswa.findById(req.params.id)
         res.json(siswa)
     } catch (error) {
         res.json({ message: error.message })
