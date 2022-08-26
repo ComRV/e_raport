@@ -62,5 +62,18 @@ const hapusSiswa = async (req, res) => {
     }
 }
 
+const ceknisn = async (req, res) => {
+    try {
+        const data = await Siswa.find({
+            NISN: req.params.nisn
+        }).exec()
+        data.length > 0 ? res.json({ status: true, data }) : res.json({ status: false, message: "NISN tidak ditemukan" })
 
-export { tambahSiswa, daftarSiswa, ubahSiswa, hapusSiswa }
+
+    } catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
+
+export { tambahSiswa, daftarSiswa, ubahSiswa, hapusSiswa, ceknisn }

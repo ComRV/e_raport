@@ -1,9 +1,22 @@
 import { Helmet } from "react-helmet"
 import { Navbar, Rightnav } from "./NavigationBar"
 import school from "../img/school.png"
+import axios from "axios"
+import GetToken from "../token/token"
+import { useState, useEffect } from "react"
 
 
 const Dashboard = () => {
+    const [siswa, setSiswa] = useState([])
+    useEffect(() => {
+        getDaftarSiswa()
+    })
+
+    const getDaftarSiswa = async () => {
+        const token = await GetToken()
+        const res = await axios.get("http://localhost:5000/daftarsiswa/all", { headers: { Authorization: `Bearer ${token}` } })
+        setSiswa(res.data)
+    }
     return (
         <div className="container min-w-full grid grid-row-3 grid-flow-col gap-4 bg-login-pattern h-screen">
             <Helmet><title>Dashboard</title></Helmet>
@@ -20,17 +33,17 @@ const Dashboard = () => {
 
                     <div className="m-3 w-60 pl-3 pb-14 pt-2 rounded text-slate-100 bg-red-500">
                         <p className="text-lg">Jumlah Siswa Aktif</p>
-                        <p className="relative top-12 text-xl">0 Orang</p>
+                        <p className="relative top-12 text-xl">{siswa.length} Orang</p>
                     </div>
 
                     <div className="m-3 w-60 pl-3 pb-14 pt-2 rounded text-slate-100 bg-purple-800">
                         <p className="text-lg">Jumlah Mata Pelajaran</p>
-                        <p className="relative top-12 text-xl">0 Mapel</p>
+                        <p className="relative top-12 text-xl">6 Mapel</p>
                     </div>
 
                     <div className="m-3 w-60 pl-3 pb-14 pt-2 rounded text-slate-100 bg-emerald-500">
                         <p className="text-lg">Jumlah Ekstrakulikuler</p>
-                        <p className="relative top-12 text-xl">0 Ekstrakulikuler</p>
+                        <p className="relative top-12 text-xl">5 Ekstrakulikuler</p>
                     </div>
                 </div>
                 <div className="absolute font-lato left-[470px] bg-slate-50 top-[1.65cm] h-[517px] w-2/4 laptop:top-[5.5cm] laptop:h-3/5">

@@ -19,8 +19,7 @@ const Cetakrapor = () => {
   }
 
   const raporpdf = async (id) => {
-    const token = await GetToken()
-    await axios.get(`http://localhost:5000/rapor/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+    await axios.get(`http://localhost:5000/rapor/${id}`)
   }
 
 
